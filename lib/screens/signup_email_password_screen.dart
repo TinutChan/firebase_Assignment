@@ -54,7 +54,12 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
           ElevatedButton(
             onPressed: signUpUser,
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.blue),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+              ),
+              backgroundColor: MaterialStateProperty.all(Colors.blue.shade900),
               textStyle: MaterialStateProperty.all(
                 const TextStyle(color: Colors.white),
               ),

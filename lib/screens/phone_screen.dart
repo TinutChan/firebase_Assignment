@@ -1,5 +1,6 @@
 import 'package:firebase_assignment/services/firebase_auth_methods.dart';
 import 'package:firebase_assignment/widgets/custom_button.dart';
+import 'package:firebase_assignment/widgets/custom_button_noImage.dart';
 import 'package:firebase_assignment/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +32,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
             controller: phoneController,
             hintText: 'Enter phone number',
           ),
-          CustomButton(
+          CustomButton02(
             onTap: () {
               context
                   .read<FirebaseAuthMethods>()

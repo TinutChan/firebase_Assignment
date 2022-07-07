@@ -31,9 +31,12 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text(
-            "Login",
-            style: TextStyle(fontSize: 30),
+          const Padding(
+            padding: EdgeInsets.only(top: 80),
+            child: Text(
+              "Login",
+              style: TextStyle(fontSize: 30),
+            ),
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.08),
           Container(
@@ -120,42 +123,70 @@ class _LoginScreenState extends State<LoginScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: CustomButton(
-                onTap: () {
-                  Navigator.pushNamed(context, PhoneScreen.routeName);
-                },
-                text: 'Phone Sign In'),
+              onTap: () {
+                Navigator.pushNamed(context, PhoneScreen.routeName);
+              },
+              text: 'Phone Sign In',
+              image: 'assets/images/phone.png',
+            ),
+          ),
+          const SizedBox(
+            height: 20,
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Wrap(
-              alignment: WrapAlignment.spaceBetween,
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Row(
               children: [
-                CustomButton(
-                  //   onTap: () {
-                  //     Navigator.pushNamed(context, EmailPasswordSignup.routeName);
-                  //   },
-                  //   text: 'Email/Password Sigup',
-                  // ),
-                  // CustomButton(
-                  onTap: () {
-                    context
-                        .read<FirebaseAuthMethods>()
-                        .signInWithGoogle(context);
-                    ;
-                  },
-                  text: 'Google Sign In',
+                Expanded(
+                  child: Container(
+                    height: 50,
+                    width: 10,
+                    child: CustomButton(
+                      onTap: () {
+                        context
+                            .read<FirebaseAuthMethods>()
+                            .signInWithGoogle(context);
+                        ;
+                      },
+                      text: 'Google',
+                      image: 'assets/images/google.png',
+                    ),
+                  ),
                 ),
-                CustomButton(
-                  onTap: () {
-                    context
-                        .read<FirebaseAuthMethods>()
-                        .signInWithFacebook(context);
-                  },
-                  text: 'Facebook Sign In',
+                const SizedBox(
+                  width: 8.0,
                 ),
+                Expanded(
+                  child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width,
+                    child: CustomButton(
+                      onTap: () {
+                        context
+                            .read<FirebaseAuthMethods>()
+                            .signInWithFacebook(context);
+                      },
+                      image: 'assets/images/facebook.png',
+                      text: 'Facebook',
+                    ),
+                  ),
+                )
               ],
             ),
           ),
+          const Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Don\'t have an account?'),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, EmailPasswordSignup.routeName);
+                },
+                child: const Text('Sign Up'),
+              ),
+            ],
+          )
         ]),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:firebase_assignment/services/firebase_auth_methods.dart';
-import 'package:firebase_assignment/widgets/custom_button.dart';
+import 'package:firebase_assignment/widgets/custom_button_noImage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
             Text(user.providerData[0].providerId),
           if (user.phoneNumber != null) Text(user.phoneNumber!),
           Text(user.uid),
-          CustomButton(
+          CustomButton02(
             onTap: () {
               context
                   .read<FirebaseAuthMethods>()
@@ -27,13 +27,13 @@ class HomeScreen extends StatelessWidget {
             },
             text: 'Verify Email',
           ),
-          CustomButton(
+          CustomButton02(
             onTap: () {
               context.read<FirebaseAuthMethods>().signOut(context);
             },
             text: 'Sign Out',
           ),
-          CustomButton(
+          CustomButton02(
             onTap: () {
               context.read<FirebaseAuthMethods>().deleteAccount(context);
             },

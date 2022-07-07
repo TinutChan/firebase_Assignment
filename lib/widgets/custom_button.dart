@@ -5,8 +5,10 @@ class CustomButton extends StatelessWidget {
     Key? key,
     required this.onTap,
     required this.text,
+    required this.image,
   }) : super(key: key);
   final String text;
+  final String image;
   final VoidCallback onTap;
 
   @override
@@ -16,24 +18,26 @@ class CustomButton extends StatelessWidget {
         onPrimary: Colors.white,
         primary: Colors.blue.shade900,
         animationDuration: const Duration(microseconds: 1),
-        minimumSize: const Size(double.infinity, 40),
+        minimumSize: const Size(double.infinity, 50),
       ),
       onPressed: onTap,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            padding: const EdgeInsets.only(left: 20),
             height: 40,
             width: 40,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(image),
+              ),
+            ),
           ),
-          // const SizedBox(
-          //   width: 30,
-          // ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(text),
+          const SizedBox(
+            width: 10,
           ),
+          Text(text),
         ],
       ),
     );
