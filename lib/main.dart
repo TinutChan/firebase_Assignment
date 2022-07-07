@@ -1,5 +1,4 @@
 import 'package:firebase_assignment/screens/home_screen.dart';
-import 'package:firebase_assignment/screens/login_email_password_screen.dart';
 import 'package:firebase_assignment/screens/login_screen.dart';
 import 'package:firebase_assignment/screens/phone_screen.dart';
 import 'package:firebase_assignment/screens/signup_email_password_screen.dart';
@@ -47,11 +46,11 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        debugShowCheckedModeBanner: false,
         home: const AuthWrapper(),
         routes: {
           EmailPasswordSignup.routeName: (context) =>
               const EmailPasswordSignup(),
-          EmailPasswordLogin.routeName: (context) => const EmailPasswordLogin(),
           PhoneScreen.routeName: (context) => const PhoneScreen(),
         },
       ),
