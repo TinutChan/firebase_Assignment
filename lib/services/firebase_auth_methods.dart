@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_assignment/utils/showOtpDialog.dart';
 import 'package:firebase_assignment/utils/showSnackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,20 +12,9 @@ class FirebaseAuthMethods {
   final FirebaseAuth _auth;
   FirebaseAuthMethods(this._auth);
 
-  // FOR EVERY FUNCTION HERE
-  // POP THE ROUTE USING: Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
-
-  // GET USER DATA
-  // using null check operator since this method should be called only
-  // when the user is logged in
   User get user => _auth.currentUser!;
 
-  // STATE PERSISTENCE STREAM
   Stream<User?> get authState => FirebaseAuth.instance.authStateChanges();
-  // OTHER WAYS (depends on use case):
-  // Stream get authState => FirebaseAuth.instance.userChanges();
-  // Stream get authState => FirebaseAuth.instance.idTokenChanges();
-  // KNOW MORE ABOUT THEM HERE: https://firebase.flutter.dev/docs/auth/start#auth-state
 
   // EMAIL SIGN UP
   Future<void> signUpWithEmail({
@@ -104,15 +95,6 @@ class FirebaseAuthMethods {
           );
           UserCredential userCredential =
               await _auth.signInWithCredential(credential);
-
-          // if you want to do specific task like storing information in firestore
-          // only for new users using google sign in (since there are no two options
-          // for google sign in and google sign up, only one as of now),
-          // do the following:
-
-          // if (userCredential.user != null) {
-          //   if (userCredential.additionalUserInfo!.isNewUser) {}
-          // }
         }
       }
     } on FirebaseAuthException catch (e) {
@@ -144,7 +126,6 @@ class FirebaseAuthMethods {
       // !!! Works only on web !!!
       ConfirmationResult result =
           await _auth.signInWithPhoneNumber(phoneNumber);
-
       // Diplay Dialog Box To accept OTP
       showOTPDialog(
         codeController: codeController,
@@ -154,7 +135,6 @@ class FirebaseAuthMethods {
             verificationId: result.verificationId,
             smsCode: codeController.text.trim(),
           );
-
           await _auth.signInWithCredential(credential);
           Navigator.of(context).pop(); // Remove the dialog box
         },
@@ -181,7 +161,6 @@ class FirebaseAuthMethods {
                 verificationId: verificationId,
                 smsCode: codeController.text.trim(),
               );
-
               // !!! Works only on Android, iOS !!!
               await _auth.signInWithCredential(credential);
               Navigator.of(context).pop(); // Remove the dialog box

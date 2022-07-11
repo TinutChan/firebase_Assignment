@@ -1,8 +1,8 @@
-import 'package:firebase_assignment/screens/home_screen.dart';
 import 'package:firebase_assignment/screens/login_screen.dart';
 import 'package:firebase_assignment/screens/phone_screen.dart';
 import 'package:firebase_assignment/screens/signup_email_password_screen.dart';
 import 'package:firebase_assignment/services/firebase_auth_methods.dart';
+import 'package:firebase_assignment/widgets/custom_botton_navigationbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -66,7 +66,7 @@ class AuthWrapper extends StatelessWidget {
     final firebaseUser = context.watch<User?>();
 
     if (firebaseUser != null) {
-      return const HomeScreen();
+      return const CustomBottomNavigationBar();
     }
     return const LoginScreen();
   }
