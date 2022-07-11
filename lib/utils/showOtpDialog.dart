@@ -24,7 +24,9 @@ void showOTPDialog({
       actions: <Widget>[
         TextButton(
           child: Text("Done"),
-          onPressed: onPressed,
+          onPressed: () {
+            return onPressed();
+          },
         )
       ],
     ),

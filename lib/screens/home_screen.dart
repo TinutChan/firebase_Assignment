@@ -1,3 +1,4 @@
+import 'package:firebase_assignment/pages/create_people_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,7 +19,14 @@ class HomeScreen extends StatelessWidget {
         child: const Icon(
           Icons.add,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CreatePeoplePage(),
+            ),
+          );
+        },
       ),
     );
   }
