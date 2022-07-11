@@ -1,3 +1,4 @@
+import 'package:firebase_assignment/models/show_people.dart';
 import 'package:firebase_assignment/pages/create_people_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,10 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Home'),
         centerTitle: true,
       ),
-      body: Container(color: Colors.grey),
+      body: Container(
+        color: Colors.grey,
+        child: ShowPeoplePage(),
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue.shade900,
         child: const Icon(
