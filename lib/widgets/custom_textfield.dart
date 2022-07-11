@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -12,7 +13,12 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: ((email) {
+        email != null && !EmailValidator.validate(email)
+            ? 'Enter a valid email'
+            : null;
+      }),
       controller: controller,
       decoration: InputDecoration(
         border: OutlineInputBorder(
