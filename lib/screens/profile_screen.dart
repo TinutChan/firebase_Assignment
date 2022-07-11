@@ -11,35 +11,45 @@ class ProfileScreen extends StatelessWidget {
     final user = context.read<FirebaseAuthMethods>().user;
 
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          if (!user.isAnonymous && user.phoneNumber == null) Text(user.email!),
-          if (!user.isAnonymous && user.phoneNumber == null)
-            Text(user.providerData[0].providerId),
-          if (user.phoneNumber != null) Text(user.phoneNumber!),
-          Text(user.uid),
-          CustomButton02(
-            onTap: () {
-              context
-                  .read<FirebaseAuthMethods>()
-                  .sendEmailVerification(context);
-            },
-            text: 'Verify Email',
-          ),
-          CustomButton02(
-            onTap: () {
-              context.read<FirebaseAuthMethods>().signOut(context);
-            },
-            text: 'Sign Out',
-          ),
-          CustomButton02(
-            onTap: () {
-              context.read<FirebaseAuthMethods>().deleteAccount(context);
-            },
-            text: 'Delete Account',
-          ),
-        ],
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.blue.shade900,
+        title: const Text('Profile'),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (!user.isAnonymous && user.phoneNumber == null)
+              Text(user.email!),
+            if (!user.isAnonymous && user.phoneNumber == null)
+              Text(user.providerData[0].providerId),
+            if (user.phoneNumber != null) Text(user.phoneNumber!),
+            Text(user.uid),
+            CustomButton02(
+              onTap: () {
+                context
+                    .read<FirebaseAuthMethods>()
+                    .sendEmailVerification(context);
+              },
+              text: 'Verify Email',
+            ),
+            CustomButton02(
+              onTap: () {
+                context.read<FirebaseAuthMethods>().signOut(context);
+              },
+              text: 'Sign Out',
+            ),
+            CustomButton02(
+              onTap: () {
+                context.read<FirebaseAuthMethods>().deleteAccount(context);
+              },
+              text: 'Delete Account',
+            ),
+          ],
+        ),
       ),
     );
   }
