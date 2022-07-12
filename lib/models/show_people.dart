@@ -39,7 +39,7 @@ class ShowPeoplePage extends StatelessWidget {
                     ),
                   ),
                   title: Text(data.name!),
-                  subtitle: Text(data.age!),
+                  subtitle: Text(data.numphone!),
                   trailing: Text(data.gender!),
                 ),
               );
