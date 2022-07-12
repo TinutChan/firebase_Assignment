@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:firebase_assignment/services/firebase_auth_methods.dart';
 import 'package:firebase_assignment/widgets/custom_button_noImage.dart';
 import 'package:flutter/material.dart';
@@ -16,32 +18,30 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: Colors.blue.shade900,
         title: const Text('Profile'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.read<FirebaseAuthMethods>().signOut(context);
+            },
+            icon: Icon(Icons.output),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (!user.isAnonymous && user.phoneNumber == null)
-              Text(user.email!),
-            if (!user.isAnonymous && user.phoneNumber == null)
-              Text(user.providerData[0].providerId),
-            if (user.phoneNumber != null) Text(user.phoneNumber!),
-            Text(user.uid),
-            CustomButton02(
-              onTap: () {
-                context
-                    .read<FirebaseAuthMethods>()
-                    .sendEmailVerification(context);
-              },
-              text: 'Verify Email',
+            Container(
+              width: double.infinity,
+              height: 200,
             ),
-            CustomButton02(
-              onTap: () {
-                context.read<FirebaseAuthMethods>().signOut(context);
-              },
-              text: 'Sign Out',
-            ),
+            if (!user.isAnonymous && user.phoneNumber == null)
+              Text(
+                user.email!,
+                style: TextStyle(fontSize: 22),
+              ),
+            Spacer(),
             CustomButton02(
               onTap: () {
                 context.read<FirebaseAuthMethods>().deleteAccount(context);

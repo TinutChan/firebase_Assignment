@@ -130,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: MediaQuery.of(context).size.height * 0.01,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(10.0),
               child: CustomButton(
                 onTap: () {
                   Navigator.pushNamed(context, PhoneScreen.routeName);
@@ -156,9 +156,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               .read<FirebaseAuthMethods>()
                               .signInWithGoogle(context);
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const ProfileScreen()));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ProfileScreen(),
+                            ),
+                          );
                         },
                         text: 'Google',
                         image: 'assets/images/google.png',
