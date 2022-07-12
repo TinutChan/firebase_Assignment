@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Container(
         color: Colors.grey,
-        child: ShowPeoplePage(),
+        child: const ShowPeoplePage(),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue.shade900,

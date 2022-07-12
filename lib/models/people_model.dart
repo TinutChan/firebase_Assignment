@@ -4,14 +4,18 @@ class PeopleModel {
   String? id;
   String? name;
   String? gender;
-  String? email;
+  String? age;
+  String? numphone;
+  String? address;
   String? photo;
 
   PeopleModel({
     this.id,
     this.name,
     this.gender,
-    this.email,
+    this.age,
+    this.numphone,
+    this.address,
     this.photo,
   });
 
@@ -19,14 +23,18 @@ class PeopleModel {
     id = doc.id;
     name = doc['name'];
     gender = doc['gender'];
-    email = doc['email'];
+    age = doc['age'];
+    numphone = doc['numphone'];
+    address = doc['address'];
     photo = doc['photo'];
   }
   Map<String, dynamic> toMap() {
     return {
       'name': name,
       'gender': gender,
-      'email': email,
+      'age': age,
+      'numphone': numphone,
+      'address': address,
       'photo': photo,
     };
   }

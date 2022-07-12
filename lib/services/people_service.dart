@@ -5,12 +5,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class PeopleService {
-  String tbPeople = 'tbPeople';
+  String DBPeople = 'DBPeople';
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Future<void> createPeople(PeopleModel peopleModel) async {
     try {
-      firestore.collection(tbPeople).add(peopleModel.toMap());
+      firestore.collection(DBPeople).add(peopleModel.toMap());
     } catch (e) {
       debugPrint('Error create people => $e');
     }
@@ -18,7 +18,7 @@ class PeopleService {
 
   Stream<List<PeopleModel>> getPeople() {
     return firestore
-        .collection(tbPeople)
+        .collection(DBPeople)
         .orderBy('name', descending: false)
         .snapshots()
         .map((event) {
@@ -32,7 +32,7 @@ class PeopleService {
 
   Future<void> updatePeople(PeopleModel people) async {
     try {
-      firestore.collection(tbPeople).doc(people.id).update(people.toMap());
+      firestore.collection(DBPeople).doc(people.id).update(people.toMap());
     } catch (e) {
       debugPrint('Error update people => $e');
     }
@@ -40,7 +40,7 @@ class PeopleService {
 
   Future<void> deletePeople(String id) async {
     try {
-      firestore.collection(tbPeople).doc(id).delete();
+      firestore.collection(DBPeople).doc(id).delete();
     } catch (e) {
       debugPrint('Error delete people => $e');
     }

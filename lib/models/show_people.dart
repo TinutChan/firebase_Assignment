@@ -1,5 +1,6 @@
 import 'package:firebase_assignment/models/people_model.dart';
 import 'package:firebase_assignment/pages/create_people_page.dart';
+import 'package:firebase_assignment/pages/detail_people_page.dart';
 import 'package:firebase_assignment/services/people_service.dart';
 import 'package:flutter/material.dart';
 
@@ -21,24 +22,26 @@ class ShowPeoplePage extends StatelessWidget {
           return ListView.separated(
             itemBuilder: (context, index) {
               var data = snapshot.data![index];
-              return ListTile(
-                onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (_) => DetailPeoplePage(people: data),
-                  //   ),
-                  // );
-                },
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    data.photo ??
-                        'https://3znvnpy5ek52a26m01me9p1t-wpengine.netdna-ssl.com/wp-content/uploads/2017/07/noimage_person.png',
+              return Card(
+                child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => DetailPeoplePage(people: data),
+                      ),
+                    );
+                  },
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      data.photo ??
+                          'https://3znvnpy5ek52a26m01me9p1t-wpengine.netdna-ssl.com/wp-content/uploads/2017/07/noimage_person.png',
+                    ),
                   ),
+                  title: Text(data.name!),
+                  subtitle: Text(data.age!),
+                  trailing: Text(data.gender!),
                 ),
-                title: Text(data.name!),
-                subtitle: Text(data.email!),
-                trailing: Text(data.gender!),
               );
             },
             separatorBuilder: (context, index) => const Divider(),
