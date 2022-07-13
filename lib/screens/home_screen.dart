@@ -16,7 +16,27 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Container(
         color: Colors.grey,
-        child: const ShowPeoplePage(),
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.all(4.0),
+                height: 150,
+                color: Colors.grey.shade200,
+                width: double.infinity,
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white),
+                ),
+              ),
+            ),
+            const Expanded(
+              flex: 2,
+              child: ShowPeoplePage(),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue.shade900,

@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:firebase_assignment/models/people_model.dart';
 import 'package:firebase_assignment/services/people_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CreatePeoplePage extends StatefulWidget {
@@ -110,16 +111,13 @@ class _CreatePeoplePageState extends State<CreatePeoplePage> {
                   height: 150.0,
                   width: 150.0,
                   decoration: BoxDecoration(
-                    border: Border.all(width: 3.0, color: Colors.grey),
-                    color: Colors.yellow,
-                    shape: BoxShape.circle,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: imageFile != null
                           ? Image.file(File(imageFile!.path)).image
-                          : const NetworkImage(
-                              'https://3znvnpy5ek52a26m01me9p1t-wpengine.netdna-ssl.com/wp-content/uploads/2017/07/noimage_person.png',
-                            ),
+                          : const AssetImage('assets/images/upload_photo.png'),
                     ),
                   ),
                 ),
@@ -127,40 +125,73 @@ class _CreatePeoplePageState extends State<CreatePeoplePage> {
               const SizedBox(height: 26.0),
               TextField(
                 controller: name,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
+                  labelText: 'Name',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
                   hintText: 'Name',
                 ),
               ),
               const SizedBox(height: 26.0),
               TextField(
                 controller: gender,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
+                  labelText: 'Gender',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
                   hintText: 'Gender',
                 ),
               ),
               const SizedBox(height: 26.0),
               TextField(
                 controller: age,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
+                  labelText: 'Age',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
                   hintText: 'Age',
                 ),
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.allow(
+                    RegExp(r'[1-9]'),
+                  ),
+                ],
               ),
               const SizedBox(height: 26.0),
               TextField(
+                keyboardType: TextInputType.phone,
                 controller: numphone,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
+                  labelText: 'Phone number',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
                   hintText: 'Phone number',
                 ),
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.allow(
+                    RegExp(r'[1-9]'),
+                  ),
+                ],
               ),
               const SizedBox(height: 26.0),
               TextField(
                 controller: address,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
+                  labelText: 'Address',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
                   hintText: 'Address',
                 ),
               ),
               const SizedBox(height: 26.0),
-              ElevatedButton.icon(
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue.shade900,
+                  minimumSize: const Size(150, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
                 onPressed: () async {
                   _buildLoading();
                   await Future.delayed(const Duration(seconds: 2));
@@ -178,8 +209,7 @@ class _CreatePeoplePageState extends State<CreatePeoplePage> {
                   Navigator.pop(context);
                   Navigator.pop(context);
                 },
-                icon: const Icon(Icons.add),
-                label: const Text('Create'),
+                child: const Text('Create'),
               ),
             ],
           ),

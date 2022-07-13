@@ -31,7 +31,7 @@ class ShowPeoplePage extends StatelessWidget {
                   var data = snapshot.data![index];
                   return Card(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
+                        borderRadius: BorderRadius.circular(10)),
                     child: ListTile(
                       onTap: () {
                         Navigator.push(
@@ -53,7 +53,7 @@ class ShowPeoplePage extends StatelessWidget {
                     ),
                   );
                 },
-                separatorBuilder: (context, index) => const Divider(),
+                separatorBuilder: (context, index) => Container(),
                 itemCount: snapshot.data!.length,
               );
             },

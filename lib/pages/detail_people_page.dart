@@ -131,26 +131,29 @@ class _DetailPeoplePageState extends State<DetailPeoplePage> {
                   height: 150.0,
                   width: 150.0,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.yellow,
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: imageFile != null
-                            ? Image.file(File(imageFile!.path)).image
-                            : NetworkImage(
-                                widget.people.photo ??
-                                    'https://3znvnpy5ek52a26m01me9p1t-wpengine.netdna-ssl.com/wp-content/uploads/2017/07/noimage_person.png',
-                              ),
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.yellow,
+                    shape: BoxShape.rectangle,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: imageFile != null
+                          ? Image.file(
+                              File(imageFile!.path),
+                            ).image
+                          : NetworkImage(
+                              widget.people.photo ??
+                                  'https://3znvnpy5ek52a26m01me9p1t-wpengine.netdna-ssl.com/wp-content/uploads/2017/07/noimage_person.png',
+                            ),
+                    ),
+                    boxShadow: const [
+                      BoxShadow(
+                        blurRadius: 3.0,
+                        offset: Offset(0.5, 0.5),
+                        spreadRadius: 3,
+                        color: Colors.white,
                       ),
-                      boxShadow: const [
-                        BoxShadow(
-                          blurRadius: 3.0,
-                          offset: Offset(0.5, 0.5),
-                          spreadRadius: 3,
-                          color: Colors.white,
-                        )
-                      ]),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 26.0),
