@@ -23,7 +23,7 @@ void showOTPDialog({
       ),
       actions: <Widget>[
         TextButton(
-          child: Text("Done"),
+          child: const Text("Done"),
           onPressed: () {
             return onPressed();
           },

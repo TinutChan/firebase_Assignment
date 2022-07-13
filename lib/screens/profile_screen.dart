@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:firebase_assignment/services/firebase_auth_methods.dart';
 import 'package:firebase_assignment/widgets/custom_button_noImage.dart';
 import 'package:flutter/material.dart';
@@ -23,31 +21,41 @@ class ProfileScreen extends StatelessWidget {
             onPressed: () {
               context.read<FirebaseAuthMethods>().signOut(context);
             },
-            icon: Icon(Icons.output),
+            icon: const Icon(Icons.output),
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: double.infinity,
-              height: 200,
+            if (user.photoURL != null)
+              CircleAvatar(
+                radius: 50,
+                backgroundImage: NetworkImage(user.photoURL!),
+              ),
+            const SizedBox(
+              height: 15,
+            ),
+            if (user.displayName != null) Text('Name: ${user.displayName!}'),
+            const SizedBox(height: 15),
+            if (!user.isAnonymous && user.phoneNumber == null)
+              Text('Email: ${user.email!}'),
+            const SizedBox(
+              height: 15,
             ),
             if (!user.isAnonymous && user.phoneNumber == null)
-              Text(
-                user.email!,
-                style: TextStyle(fontSize: 22),
-              ),
-            Spacer(),
-            CustomButton02(
-              onTap: () {
-                context.read<FirebaseAuthMethods>().deleteAccount(context);
-              },
-              text: 'Delete Account',
+              Text('Provider: ${user.providerData[0].providerId}'),
+            const SizedBox(
+              height: 15,
             ),
+            if (!user.emailVerified && !user.isAnonymous)
+              CustomButton02(
+                onTap: () {
+                  context.read<FirebaseAuthMethods>().deleteAccount(context);
+                },
+                text: 'Delete Account',
+              ),
           ],
         ),
       ),

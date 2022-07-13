@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:firebase_assignment/utils/showOtpDialog.dart';
-import 'package:firebase_assignment/utils/showSnackbar.dart';
+import 'package:firebase_assignment/utils/show_OtpDialog.dart';
+import 'package:firebase_assignment/utils/show_Snackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

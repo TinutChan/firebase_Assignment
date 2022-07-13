@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers, use_build_context_synchronously
+
 import 'dart:io';
 import 'package:firebase_assignment/models/people_model.dart';
 import 'package:firebase_assignment/services/people_service.dart';

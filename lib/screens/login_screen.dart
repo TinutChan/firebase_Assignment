@@ -1,4 +1,3 @@
-import 'package:firebase_assignment/screens/profile_screen.dart';
 import 'package:firebase_assignment/screens/phone_screen.dart';
 import 'package:firebase_assignment/screens/signup_email_password_screen.dart';
 import 'package:firebase_assignment/services/firebase_auth_methods.dart';
@@ -151,16 +150,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 50,
                       width: 10,
                       child: CustomButton(
-                        onTap: () {
-                          context
+                        onTap: () async {
+                          await context
                               .read<FirebaseAuthMethods>()
                               .signInWithGoogle(context);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const ProfileScreen(),
-                            ),
-                          );
+                          setState(() {});
                         },
                         text: 'Google',
                         image: 'assets/images/google.png',
