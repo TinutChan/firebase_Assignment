@@ -34,6 +34,12 @@ class ProfileScreen extends StatelessWidget {
                 radius: 50,
                 backgroundImage: NetworkImage(user.photoURL!),
               ),
+            if (user.photoURL == null)
+              const CircleAvatar(
+                radius: 50,
+                backgroundImage: NetworkImage(
+                    'https://www.kbbioenergy.com/wp-content/uploads/2020/04/no-image.jpg'),
+              ),
             const SizedBox(
               height: 15,
             ),
