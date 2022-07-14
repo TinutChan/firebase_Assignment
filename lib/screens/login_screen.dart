@@ -5,6 +5,7 @@ import 'package:firebase_assignment/widgets/custom_button.dart';
 import 'package:firebase_assignment/widgets/custom_checkedbox.dart';
 import 'package:firebase_assignment/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -134,8 +135,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 onTap: () {
                   Navigator.pushNamed(context, PhoneScreen.routeName);
                 },
+                icons: Icons.phone_android,
+                colors: Colors.white,
                 text: 'Phone Sign In',
-                image: 'assets/images/phone.png',
               ),
             ),
             const SizedBox(
@@ -156,8 +158,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               .signInWithGoogle(context);
                           setState(() {});
                         },
+                        icons: FontAwesomeIcons.google,
+                        colors: Colors.red.shade900,
                         text: 'Google',
-                        image: 'assets/images/google.png',
                       ),
                     ),
                   ),
@@ -169,12 +172,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 50,
                       width: MediaQuery.of(context).size.width,
                       child: CustomButton(
-                        onTap: () {
-                          context
-                              .read<FirebaseAuthMethods>()
-                              .signInWithFacebook(context);
+                        onTap: () async {
+                          debugPrint(
+                              '-----------Logged-with-facebook----------');
+                          // await context
+                          //     .read<FirebaseAuthMethods>()
+                          //     .signInWithFacebook(context);
+                          // setState(() {});
                         },
-                        image: 'assets/images/facebook.png',
+                        // image: 'assets/images/facebook.png',
+                        icons: FontAwesomeIcons.facebook,
+                        colors: Colors.white,
                         text: 'Facebook',
                       ),
                     ),

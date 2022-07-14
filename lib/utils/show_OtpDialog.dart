@@ -27,7 +27,7 @@ void showOTPDialog({
           onPressed: () {
             return onPressed();
           },
-        )
+        ),
       ],
     ),
   );

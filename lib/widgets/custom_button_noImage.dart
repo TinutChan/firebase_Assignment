@@ -19,10 +19,6 @@ class CustomButton02 extends StatelessWidget {
         minimumSize: const Size(double.infinity, 40),
       ),
       onPressed: onTap,
-
-      // const SizedBox(
-      //   width: 30,
-      // ),
       child: Text(text),
     );
   }
