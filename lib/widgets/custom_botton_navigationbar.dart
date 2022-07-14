@@ -38,7 +38,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               Icons.home,
             ),
             label: '',
-            activeIcon: Icon(Icons.home_filled),
+            activeIcon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

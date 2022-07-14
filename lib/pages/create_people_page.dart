@@ -123,19 +123,34 @@ class _CreatePeoplePageState extends State<CreatePeoplePage> {
                 ),
               ),
               const SizedBox(height: 26.0),
-              TextField(
-                controller: name,
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  hintText: 'Name',
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      width: 40,
+                      height: 50,
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: TextField(
+                      controller: name,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.all(10),
+                        labelText: 'Name',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        hintText: 'Name',
+                      ),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 26.0),
               TextField(
                 controller: gender,
                 decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(10),
                   labelText: 'Gender',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
@@ -146,6 +161,7 @@ class _CreatePeoplePageState extends State<CreatePeoplePage> {
               TextField(
                 controller: age,
                 decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(10),
                   labelText: 'Age',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
@@ -162,6 +178,7 @@ class _CreatePeoplePageState extends State<CreatePeoplePage> {
                 keyboardType: TextInputType.phone,
                 controller: numphone,
                 decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(10),
                   labelText: 'Phone number',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
@@ -177,6 +194,7 @@ class _CreatePeoplePageState extends State<CreatePeoplePage> {
               TextField(
                 controller: address,
                 decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(10),
                   labelText: 'Address',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
